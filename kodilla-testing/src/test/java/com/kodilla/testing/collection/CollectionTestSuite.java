@@ -2,9 +2,12 @@ package com.kodilla.testing.collection;
 
 import org.junit.jupiter.api.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CollectionTestSuite {
+
+
     @BeforeEach
     public void before() {
         System.out.println("Collection Test Case begin");
@@ -14,8 +17,6 @@ public class CollectionTestSuite {
     public void after() {
         System.out.println("Collection Test Case end");
     }
-
-
 
     @DisplayName("when created empty evenNumbers list"
             + "then evenNumbers list should equal to an empty noNumbers list")
@@ -51,5 +52,10 @@ public class CollectionTestSuite {
         //Then
         Assertions.assertEquals(testedNumbers,evenNumbers);
 
+        //Extra task
+        Integer numbersInTest[] = new Integer[] {2,4,6};
+        List<Integer> list = Arrays.asList(numbersInTest);
+        System.out.println("Extra task. List containing numbers in test: " + list);
         }
+
 }
