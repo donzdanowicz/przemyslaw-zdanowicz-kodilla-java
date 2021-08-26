@@ -30,17 +30,14 @@ public class ShapeCollector {
     }
 
     public String showFigures() {
-        String figureName = collector.get(n).getShapeName();
-        int figureField = collector.get(n).getField();
         String str ="";
         for(Shape figures: collector) {
-            //find a way to do it
-            n++;
-            return figures.getShapeName() + ", circle";// + collector.get(n).getShapeName() + figureField + collector.size();
+
+            String figure = figures.getShapeName() + ", " + figures.getField();
+            str += figure + ". ";
 
         }
-        //return "Figure #" + n+1 + ": " + figureName + ", field: " + figureField;
-        return null;
+        return str;
     }
 
     public int listSize() {

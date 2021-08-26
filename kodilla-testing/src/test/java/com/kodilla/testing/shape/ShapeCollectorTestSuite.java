@@ -23,57 +23,63 @@ public class ShapeCollectorTestSuite {
         testCounter++;
         System.out.println("Preparing to test #" + testCounter);
     }
+    @Nested
+    @DisplayName("Tests to add and remove figures")
+    class TestAddAndRemoveFigure {
+        @Test
+        void testAddFigure() {
+            //Given
+            Triangle triangle = new Triangle("triangle", 40);
+            ShapeCollector shapeCollector = new ShapeCollector();
+            //When
+            shapeCollector.addFigure(triangle);
+            //Then
+            Assertions.assertEquals(1, shapeCollector.listSize());
+        }
 
-    @Test
-    void testAddFigure() {
-        //Given
-        Triangle triangle = new Triangle("triangle", 40);
-        ShapeCollector shapeCollector = new ShapeCollector();
-        //When
-        shapeCollector.addFigure(triangle);
-        //Then
-        Assertions.assertEquals(1, shapeCollector.listSize());
+        @Test
+        void testRemoveFigure() {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector();
+            Triangle triangle = new Triangle("triangle", 40);
+            //When
+            shapeCollector.addFigure(triangle);
+            shapeCollector.removeFigure(triangle);
+            //Then
+            Assertions.assertEquals(0, shapeCollector.listSize());
+        }
     }
 
-    @Test
-    void testRemoveFigure() {
-        //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
-        Triangle triangle = new Triangle("triangle", 40);
-        //When
-        shapeCollector.addFigure(triangle);
-        shapeCollector.removeFigure(triangle);
-        //Then
-        Assertions.assertEquals(0, shapeCollector.listSize());
-    }
+    @Nested
+    @DisplayName("Tests to get figure and show figures")
+    class TestsToGetAndShowFigures {
+        @Test
+        void testGetFigure() {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector();
+            Triangle triangle = new Triangle("triangle", 40);
+            Circle circle = new Circle("circle", 30);
+            //When
+            shapeCollector.addFigure(triangle);
+            shapeCollector.addFigure(circle);
+            //Then
+            Assertions.assertEquals(triangle, shapeCollector.getFigure(0));
+        }
 
-    @Test
-    void testGetFigure() {
-        //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
-        Triangle triangle = new Triangle("triangle", 40);
-        Circle circle = new Circle("circle", 30);
-        //When
-        shapeCollector.addFigure(triangle);
-        shapeCollector.addFigure(circle);
-        //Then
-        Assertions.assertEquals(triangle, shapeCollector.getFigure(0));
-    }
-
-    @Test
-    void showFigures() {
-        //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
-        Triangle triangle = new Triangle("triangle", 40);
-        Circle circle = new Circle("circle", 19);
-        //When
-        shapeCollector.addFigure(triangle);
-        shapeCollector.addFigure(circle);
-        //Then
-        Assertions.assertEquals("triangle, circle", shapeCollector.showFigures());
+        @Test
+        void showFigures() {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector();
+            Triangle triangle = new Triangle("triangle", 40);
+            Circle circle = new Circle("circle", 19);
+            //When
+            shapeCollector.addFigure(triangle);
+            shapeCollector.addFigure(circle);
+            //Then
+            Assertions.assertEquals("triangle, 40. circle, 19. ", shapeCollector.showFigures());
+        }
     }
 }
-
 
 
 
