@@ -29,7 +29,7 @@ public class ShapeCollector {
         return null;
     }
 
-    public String showFigures() {
+   public String showFigures() {
         String str ="";
         for(Shape figures: collector) {
 
