@@ -36,8 +36,8 @@ public class ProbablyIWillThrowExceptionTestSuite {
                 () -> assertThrows(Exception.class, () -> exceptionHandling.probablyIWillThrowException(5, 3)),
                 () -> assertThrows(Exception.class, () -> exceptionHandling.probablyIWillThrowException(2, 0)),
                 () -> assertThrows(Exception.class, () -> exceptionHandling.probablyIWillThrowException(0, 0)),
-                () -> assertDoesNotThrow(() -> exceptionHandling.probablyIWillThrowException(1.5, 2)),
-                () -> assertDoesNotThrow(() -> exceptionHandling.probablyIWillThrowException(1, 2))
+                () -> assertDoesNotThrow(() -> exceptionHandling.probablyIWillThrowException(1, 2)),
+                () -> assertDoesNotThrow(() -> exceptionHandling.probablyIWillThrowException(1.5, 2))
         );
     }
 
