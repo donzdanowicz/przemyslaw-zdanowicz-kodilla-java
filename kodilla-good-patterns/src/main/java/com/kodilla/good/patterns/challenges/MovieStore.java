@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 class MovieStore {
-
     public static void main(String[] args) {
         MovieStore movieStore = new MovieStore();
         Map <String, List<String>> booksTitles = movieStore.getMovies();
