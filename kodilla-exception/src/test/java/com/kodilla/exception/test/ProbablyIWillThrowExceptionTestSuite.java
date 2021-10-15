@@ -32,12 +32,15 @@ public class ProbablyIWillThrowExceptionTestSuite {
 
         //When & Then
         assertAll(
+                () -> assertThrows(Exception.class, () -> exceptionHandling.probablyIWillThrowException(0.99999999, 2.0)),
+                () -> assertThrows(Exception.class, () -> exceptionHandling.probablyIWillThrowException(2.00000001, 3.0)),
+                () -> assertThrows(Exception.class, () -> exceptionHandling.probablyIWillThrowException(2.0, 0.0)),
                 () -> assertThrows(Exception.class, () -> exceptionHandling.probablyIWillThrowException(1.5, 1.5)),
-                () -> assertThrows(Exception.class, () -> exceptionHandling.probablyIWillThrowException(5, 3)),
-                () -> assertThrows(Exception.class, () -> exceptionHandling.probablyIWillThrowException(2, 0)),
-                () -> assertThrows(Exception.class, () -> exceptionHandling.probablyIWillThrowException(0, 0)),
-                () -> assertDoesNotThrow(() -> exceptionHandling.probablyIWillThrowException(1, 2)),
-                () -> assertDoesNotThrow(() -> exceptionHandling.probablyIWillThrowException(1.5, 2))
+                () -> assertDoesNotThrow(() -> exceptionHandling.probablyIWillThrowException(1.99999999, 2.0)),
+                () -> assertDoesNotThrow(() -> exceptionHandling.probablyIWillThrowException(1.00000001, 1.0)),
+                () -> assertDoesNotThrow(() -> exceptionHandling.probablyIWillThrowException(1.5, 1.50000001)),
+                () -> assertDoesNotThrow(() -> exceptionHandling.probablyIWillThrowException(1.5, 1.49999999)),
+                () -> assertDoesNotThrow(() -> exceptionHandling.probablyIWillThrowException(1.5, 1.0))
         );
     }
 
