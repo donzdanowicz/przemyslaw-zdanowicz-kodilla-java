@@ -1,0 +1,58 @@
+CREATE TABLE ISSUESLIST
+(
+    ID SERIAL PRIMARY KEY,
+    NAME VARCHAR(100)
+);
+
+CREATE TABLE ISSUES
+(
+    ID SERIAL PRIMARY KEY,
+    ISSUESLIST_ID  BIGINT UNSIGNED NOT NULL,
+    SUMMARY VARCHAR(100),
+    DESCRIPTION VARCHAR(200),
+    FOREIGN KEY (ISSUESLIST_ID)
+        REFERENCES ISSUESLIST(ID)
+);
+
+INSERT INTO ISSUESLIST (NAME)
+VALUES ("To do");
+
+INSERT INTO ISSUESLIST (NAME)
+VALUES ("In progress");
+
+INSERT INTO ISSUESLIST (NAME)
+VALUES ("Done");
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (1, "Add new methods", "Add getName method to User class.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (1, "Change methods", "Change methods in User class.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (1, "Add new methods", "Add getId method to User class.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (1, "Add new classes", "Add new classes extending User class.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (1, "Add builder", "Add new builder to create orders.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (2, "Change methods", "Change methods in OrderingProcess class.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (2, "Add interface", "Add new interface to make a strategy pattern.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (2, "Delete unused code", "Delete all code pieces that are no longer used.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (2, "Add new methods", "Add new methods to OrderingProcess class.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (2, "Delete unused classes", "Delete classes that are no longer necessary.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (3, "Correct code", "Correct code according to problems listed by Project Manager.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (3, "Create new class", "Create new class to make comments");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (3, "Create new database", "Create new database with orders");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (3, "Correct new class", "Create new class to calculate invoices.");
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+VALUES (3, "Make code more readable", "Make code more readable so other
+programmists can read it better and look for places for optimization.");
+
+COMMIT;
