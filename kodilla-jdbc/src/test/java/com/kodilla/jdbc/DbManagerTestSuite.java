@@ -57,6 +57,7 @@ class DbManagerTestSuite {
         Statement statement = dbManager.getConnection().createStatement();
         ResultSet rs = statement.executeQuery(sqlQuery);
 
+
         //Then
         int counter = 0;
         while (rs.next()) {

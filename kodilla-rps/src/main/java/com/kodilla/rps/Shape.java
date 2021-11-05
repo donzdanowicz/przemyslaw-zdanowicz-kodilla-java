@@ -1,11 +1,17 @@
 package com.kodilla.rps;
 
-public interface Shape {
-    String name = null;
-    int key = 0;
-    int computersMove = 0;
-    boolean winner = true;
-    String winnerIs(int computersMove);
-    int getKey();
-    String getName();
+public class Shape {
+
+    public static String shape(int move) {
+        switch(move) {
+            case 1:
+                return "Rock";
+            case 2:
+                return "Paper";
+            case 3:
+                return "Scissors";
+            default:
+                return null;
+        }
+    }
 }
