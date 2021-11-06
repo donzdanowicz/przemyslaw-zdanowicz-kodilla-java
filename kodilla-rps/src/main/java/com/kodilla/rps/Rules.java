@@ -1,36 +1,36 @@
 package com.kodilla.rps;
 
 public class Rules {
+    private static final Player user = MessagesAndConditions.getUser();
+    private static final Player computer = MessagesAndConditions.getComputer();
+    private static final Game game = MessagesAndConditions.getGame();
+    private static final String SOMETHING_WRONG = "Something went wrong.";
 
-
-    int[][] rules = {
+    private static final int[][] rules = {
             {0, -1, 1},
             {1, 0, -1},
             {-1, 1, 0}
     };
 
-    public int whoWins(User user, Computer computer, int usersMove, int computersMove) {
+    public void whoWins(int usersMove, int computersMove) {
         int result = rules[usersMove-1][computersMove-1];
         switch (result) {
         case -1:
-            user.setUserRoundResult(0);
-            computer.setComputerRoundResult(1);
-            computer.setComputerCount(computer.getComputerCount() + 1);
+            game.setUserRoundResult(0);
+            game.setComputerRoundResult(1);
+            computer.addPoints();
             break;
         case 0:
-            user.setUserRoundResult(0);
-            computer.setComputerRoundResult(0);
+            game.setUserRoundResult(0);
+            game.setComputerRoundResult(0);
             break;
         case 1:
-            user.setUserRoundResult(1);
-            computer.setComputerRoundResult(0);
-            user.setUserCount(user.getUserCount() + 1);
+            game.setUserRoundResult(1);
+            game.setComputerRoundResult(0);
+            user.addPoints();
             break;
         default:
-            System.out.println("Something went wrong.");
+            System.out.println(SOMETHING_WRONG);
         }
-
-        return result;
-
     }
 }

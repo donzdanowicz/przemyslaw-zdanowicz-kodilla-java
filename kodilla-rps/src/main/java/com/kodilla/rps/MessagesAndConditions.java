@@ -3,86 +3,178 @@ package com.kodilla.rps;
 import java.util.Scanner;
 
 public class MessagesAndConditions {
+    private static final Scanner scan = new Scanner(System.in);
+    private static final Player user = new User();
+    private static final Player computer = new Computer();
+    private static final Game game = new Game();
+    private static boolean end = false;
+    private static boolean newGame = false;
+    private static final String HOW_MANY_ROUNDS = "How many rounds do you want to play?";
+    private static final String WRONG_KEY_CHOOSE_A_NUMBER = "Wrong key! \n" +
+            "Try again. This time choose a number between 0 and 99.";
+    private static final String CHOOSE_YOUR_MOVE = "Choose your move.";
+    private static final String KEY_1 = "1";
+    private static final String KEY_2 = "2";
+    private static final String KEY_3 = "3";
+    private static final String KEY_Y = "y";
+    private static final String KEY_N = "n";
+    private static final String KEY_X = "x";
+    private static final String EXCLAMATION_MARK = "!";
+    private static final String YOUR_MOVE = "Your move: ";
+    private static final String COMPUTER = "Computer : ";
+    private static final String ROUND_RESULT = "Result of this round is: \n";
+    private static final String GAME_RESULT = "Result of the game is: \n";
+    private static final String COLON = ": ";
+    private static final String QUOTE = "";
+    private static final String DO_YOU_WANT_TO_STOP_GAME = "Do you want to stop this game? Type in Y/N";
+    private static final String GAME_CONTINUES = "Game continues.";
+    private static final String YOU_WIN = "Congratulations! You win, ";
+    private static final String YOU_LOSE = "You lose!";
+    private static final String NEW_GAME = "\nNEW GAME";
+    private static final String HELLO = "Hello! What's your name?";
+    private static final String HI = "Hi, ";
+    private static final String SMILE = " :)";
+    private static final String INSTRUCTIONS_1 = "Instructions: \nKey 1: Rock \nKey 2: Paper \nKey 3: Scissors";
+    private static final String INSTRUCTIONS_2 = "Key x: End game. \nKey n: New game.";
+    private static final String WRONG_KEY = "Wrong key. Try again!";
+    private static final String DO_YOU_WANT_TO_PLAY_AGAIN = "Do you want to play again (Key N) or quit (Key X) ?";
+    private static final String ARE_YOU_SURE_TO_END = "Are you sure you want to end the game? Type in: Y/N";
+    private static final String THE_END_OF_GAME = "\nTHE END OF GAME.";
+    private static final String ARE_YOU_SURE_NEW_GAME = "Are you sure you want to start a new game? Type in: Y/N";
+    private static final String STARTING_NEW_GAME = "Starting a new game.";
 
-    public void howManyRounds(Scanner scan, User user) {
-        System.out.println("How many rounds do you want to play?");
-
-        try {
-            int setRoundsNumber = scan.nextInt();
-            user.setRounds(setRoundsNumber);
-        } catch (Exception e) {
-            System.out.println("Wrong key! \nTry again. This time choose a number.\n");
-        }
+    public static void setNewGame(boolean newGame) {
+        MessagesAndConditions.newGame = newGame;
     }
 
-    public void results(int usersMove, int computersMove, User user, Computer computer) {
-        System.out.println("Your move: " + Shape.shape(usersMove));
-        System.out.println("Computer : " + Shape.shape(computersMove));
-        System.out.println("Result of this round is: \n" + user.getUserName() + ": " + user.getUserRoundResult()
-                + ". Computer: " + computer.getComputerRoundResult());
-        System.out.println("Result of the game is: \n" + user.getUserName() + ": " + user.getUserCount()
-                + ". Computer: " + computer.getComputerCount());
+    public static Player getUser() {
+        return user;
     }
 
-    public void areYouSure(User user, Scanner scan) {
-        System.out.println("Are you sure that you want to stop this game? Type in Y/N");
-        String sure = scan.nextLine();
-        if(sure.equals("Y") || sure.equals("y")) {
-            user.setRounds(-1);
-        } else if (sure.equals("N") || sure.equals("n")) {
-            System.out.println("Game continues.");
-        }
+    public static Player getComputer() {
+        return computer;
     }
 
-    public void winner(User user, Computer computer) {
-        if (user.getRounds() == -1) {
-            System.out.println("");
-        } else if (user.getUserCount() > computer.getComputerCount()) {
-            System.out.println("Congratulations! You've won, " + user.getUserName() + "!");
-        } else {
-            System.out.println("You lose!");
-        }
+    public static Game getGame() {
+        return game;
     }
 
-    public void getName(Scanner scan, User user) {
-        System.out.println("\nNEW GAME");
-        System.out.println("Hello! What's your name?");
-        user.setUserName(scan.nextLine());
-        System.out.println("Hi, " + user.getUserName() + " :)");
-    }
+    public static int getUsersMove() {
+        boolean goodValue = false;
+        int usersMove = 0;
+        while (!goodValue) {
+            System.out.println(CHOOSE_YOUR_MOVE);
+            String usersKey = scan.nextLine();
 
-    public void instructions() {
-        System.out.println("Instructions: \nKey 1: Rock \nKey 2: Paper \nKey 3: Scissors");
-        System.out.println("Key x: End game. \nKey n: New game.");
-    }
-
-    public void wrongKey() {
-        System.out.println("Wrong key. Try again!");
-    }
-
-    public boolean nOrXChosen(Scanner scan) {
-        boolean nxChosen = false;
-        while (!nxChosen) {
-            System.out.println("Do you want to play again (Key N) or quit (Key X) ?");
-            String nx = scan.nextLine();
-            if (nx.equals("x")) {
-                System.out.println("Are you sure you want to end the game? Type in: Y/N");
-                String areYouSure = scan.nextLine();
-                if (areYouSure.equals("Y") || areYouSure.equals("y")) {
-                    System.out.println("\nTHE END OF GAME.");
-                    return true;
-                }
-            } else if (nx.equals("n")) {
-                System.out.println("Are you sure you want to end current game and start a new one? Type in: Y/N");
-                String areYouSure = scan.nextLine();
-                if (areYouSure.equals("Y") || areYouSure.equals("y")) {
-                    System.out.println("Starting a new game.");
-                    nxChosen = true;
-                }
+            if (KEY_1.equals(usersKey) || KEY_2.equals(usersKey) || KEY_3.equals(usersKey)) {
+                usersMove = Integer.parseInt(usersKey);
+                goodValue = true;
+            } else if (KEY_N.equalsIgnoreCase(usersKey) || KEY_X.equalsIgnoreCase(usersKey)) {
+                goodValue = true;
             } else {
-                wrongKey();
+                System.out.println(WRONG_KEY);
             }
         }
-        return false;
+        return usersMove;
+    }
+
+    public static void howManyRounds() {
+        System.out.println(HOW_MANY_ROUNDS);
+        boolean key = false;
+        String setRoundsNumber;
+        int rounds = 0;
+        while (!key) {
+            setRoundsNumber = scan.nextLine();
+            key = setRoundsNumber.chars().allMatch(Character::isDigit);
+            if (QUOTE.equals(setRoundsNumber) || !key) {
+                System.out.println(WRONG_KEY_CHOOSE_A_NUMBER);
+                key = false;
+            } else {
+                rounds = Integer.parseInt(setRoundsNumber);
+                if (rounds < 100) {
+                    game.setRounds(rounds);
+                } else {
+                    System.out.println(WRONG_KEY_CHOOSE_A_NUMBER);
+                    key = false;
+                }
+            }
+        }
+        game.setRounds(rounds);
+    }
+
+    public static void results(int usersMove, int computersMove) {
+        System.out.println(YOUR_MOVE + Shape.shape(usersMove));
+        System.out.println(COMPUTER + Shape.shape(computersMove));
+        System.out.println(ROUND_RESULT + user.getName() + COLON + game.getUserRoundResult()
+                + COMPUTER + game.getComputerRoundResult());
+        System.out.println(GAME_RESULT + user.getName() + COLON + user.getPoints()
+                + COMPUTER + computer.getPoints());
+    }
+
+    public static boolean endGame() {
+        return end;
+    }
+
+    public static boolean newGame() {
+        return newGame;
+    }
+
+    public static void areYouSure() {
+        System.out.println(DO_YOU_WANT_TO_STOP_GAME);
+        String sure = scan.nextLine();
+        if(KEY_Y.equalsIgnoreCase(sure)) {
+            nOrXChosen();
+        } else if (KEY_N.equalsIgnoreCase(sure)) {
+            System.out.println(GAME_CONTINUES);
+        }
+    }
+
+    public static void winner() {
+        if (user.getPoints() == game.getRounds()) {
+            System.out.println(YOU_WIN + user.getName() + EXCLAMATION_MARK);
+        } else if (computer.getPoints() == game.getRounds()) {
+            System.out.println(YOU_LOSE);
+        }
+    }
+
+    public static void getName() {
+        System.out.println(NEW_GAME);
+        System.out.println(HELLO);
+        user.setName(scan.nextLine());
+        System.out.println(HI + user.getName() + SMILE);
+    }
+
+    public static void instructions() {
+        System.out.println(INSTRUCTIONS_1);
+        System.out.println(INSTRUCTIONS_2);
+    }
+
+    public static void nOrXChosen() {
+        boolean nxChosen = false;
+
+        while (!nxChosen) {
+            System.out.println(DO_YOU_WANT_TO_PLAY_AGAIN);
+            String nx = scan.nextLine();
+
+            if (KEY_X.equalsIgnoreCase(nx)) {
+                System.out.println(ARE_YOU_SURE_TO_END);
+                String areYouSure = scan.nextLine();
+                if (KEY_Y.equalsIgnoreCase(areYouSure)) {
+                    System.out.println(THE_END_OF_GAME);
+                    end = true;
+                }
+                nxChosen = true;
+            } else if (KEY_N.equalsIgnoreCase(nx)) {
+                System.out.println(ARE_YOU_SURE_NEW_GAME);
+                String areYouSure = scan.nextLine();
+                if (KEY_Y.equalsIgnoreCase(areYouSure)) {
+                    System.out.println(STARTING_NEW_GAME);
+                    newGame = true;
+                }
+                nxChosen = true;
+            } else {
+                System.out.println(WRONG_KEY);
+            }
+        }
     }
 }
