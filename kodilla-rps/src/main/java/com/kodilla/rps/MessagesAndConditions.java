@@ -25,8 +25,8 @@ public class MessagesAndConditions {
     private static final String COMPUTER_2 = " Computer: ";
     private static final String ROUND_RESULT = "Result of this round is: \n";
     private static final String GAME_RESULT = "Result of the game is: \n";
-    private static final String COLON = ": ";
     private static final String QUOTE = "";
+    private static final String COLON = ": ";
     private static final String DO_YOU_WANT_TO_STOP_GAME = "Do you want to stop this game? Type in Y/N";
     private static final String GAME_CONTINUES = "Game continues.";
     private static final String YOU_WIN = "Congratulations! You win, ";
