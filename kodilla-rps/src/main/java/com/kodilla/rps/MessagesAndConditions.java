@@ -22,6 +22,7 @@ public class MessagesAndConditions {
     private static final String EXCLAMATION_MARK = "!";
     private static final String YOUR_MOVE = "Your move: ";
     private static final String COMPUTER = "Computer : ";
+    private static final String COMPUTER_2 = " Computer: ";
     private static final String ROUND_RESULT = "Result of this round is: \n";
     private static final String GAME_RESULT = "Result of the game is: \n";
     private static final String COLON = ": ";
@@ -106,9 +107,9 @@ public class MessagesAndConditions {
         System.out.println(YOUR_MOVE + Shape.shape(usersMove));
         System.out.println(COMPUTER + Shape.shape(computersMove));
         System.out.println(ROUND_RESULT + user.getName() + COLON + game.getUserRoundResult()
-                + COMPUTER + game.getComputerRoundResult());
+                + COMPUTER_2 + game.getComputerRoundResult());
         System.out.println(GAME_RESULT + user.getName() + COLON + user.getPoints()
-                + COMPUTER + computer.getPoints());
+                + COMPUTER_2 + computer.getPoints());
     }
 
     public static boolean endGame() {
