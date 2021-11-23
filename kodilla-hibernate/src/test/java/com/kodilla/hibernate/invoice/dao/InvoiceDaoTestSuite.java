@@ -7,14 +7,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+@Transactional
 @SpringBootTest
 public class InvoiceDaoTestSuite {
     @Autowired
     private InvoiceDao invoiceDao;
+
 
     @Test
     void testInvoiceDaoSave() {
@@ -39,7 +42,7 @@ public class InvoiceDaoTestSuite {
         assertNotEquals(0, id);
 
         //CleanUp
-        //invoiceDao.deleteById(id);
+        invoiceDao.deleteById(id);
 
     }
 
