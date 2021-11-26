@@ -6,9 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 
 @SpringBootTest
 public class CompanyDaoTestSuite {
@@ -103,15 +105,15 @@ public class CompanyDaoTestSuite {
 
         System.out.println(1);
         //When
-        List<Employee> retrieveEmployeeByLastname = employeeDao.retrieveEmployeesByName("Smith");
+        List<Employee> retrieveEmployeeByLastName = employeeDao.retrieveEmployeeByLastName("Smith");
         System.out.println(1.5);
-        System.out.println(retrieveEmployeeByLastname.get(0).getLastname());
+        System.out.println(retrieveEmployeeByLastName.get(0).getLastname());
         List<Company> retrieveCompaniesWithThreeFirstLettersAsGiven
                 = companyDao.retrieveCompaniesWithThreeFirstLettersAsGiven("Sof");
 
         System.out.println(2);
         //Then
-        assertNotEquals(0, retrieveEmployeeByLastname.size());
+        assertNotEquals(0, retrieveEmployeeByLastName.size());
         assertNotEquals(0, retrieveCompaniesWithThreeFirstLettersAsGiven.size());
 
         //CleanUp

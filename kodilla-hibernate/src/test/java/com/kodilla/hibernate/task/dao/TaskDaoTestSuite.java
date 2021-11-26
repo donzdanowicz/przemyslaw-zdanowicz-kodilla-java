@@ -26,6 +26,8 @@ class TaskDaoTestSuite {
 
     @Autowired
     private TaskDao taskDao;
+    @Autowired
+    private TaskListDao taskListDao;
     private static final String DESCRIPTION = "Test: Learn Hibernate";
     private static final String TO_DO = "To do";
 
@@ -82,8 +84,7 @@ class TaskDaoTestSuite {
             taskDao.deleteById(id);
         }
 
-    @Autowired
-    private TaskListDao taskListDao;
+
 
     @Test
     void testNamedQueries() {
