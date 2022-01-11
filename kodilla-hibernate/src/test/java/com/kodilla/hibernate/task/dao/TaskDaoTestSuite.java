@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,7 @@ import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Transactional
 @SpringBootTest
 class TaskDaoTestSuite {
 
@@ -85,7 +87,7 @@ class TaskDaoTestSuite {
         }
 
 
-
+    @Transactional
     @Test
     void testNamedQueries() {
 
