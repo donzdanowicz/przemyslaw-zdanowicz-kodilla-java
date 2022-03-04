@@ -140,5 +140,4 @@ public class CrudAppTestSuite {
         Thread.sleep(3000);
         deleteTestTask(taskName);
     }
-
 }
